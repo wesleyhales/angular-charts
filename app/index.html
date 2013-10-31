@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <title>Angular Charts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Wesley Hales">
+
+</head>
+<body ng-controller="PageCtrl">
+
+<chart id="percentage"
+       chartdata="pieChartData"
+       type="pie" style="height:260px"
+       titleicon=""
+       titlecolor="rgba(255,3,3,0.5)"
+       titleimagetop="-6%"
+       titleimageleft="-2%"></chart>
+
+<chart id="topic-totals"
+       chartdata="lineChartData"
+       type="line"
+       xAxisLabel="return Highcharts.dateFormat('%H:%M:%S', this.value);"
+       xAxisStep="3"></chart>
+</div>
+
+<chart id="areaDemo"
+       chartdata="areaChartData"
+       type="area"
+       xAxisLabel="return Highcharts.dateFormat('%H:%M:%S', this.value);"
+       xAxisStep="3"></chart>
+</div>
+
+<script src="libs/angular-1.2.0-rc.3/angular.min.js"></script>
+<script src="libs/angular-1.2.0-rc.3/angular-route.min.js"></script>
+<script src="libs/Highcharts-3.0.7/standalone-framework.js"></script>
+<script src="libs/Highcharts-3.0.7/highcharts.js"></script>
+
+<script src="js/app.js"></script>
+<script src="js/page-controller.js"></script>
+<script src="js/page-service.js"></script>
+<script src="charts/chart-directive.js"></script>
+<script src="charts/chart-service.js"></script>
+</body>
+</html>
