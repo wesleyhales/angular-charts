@@ -71,8 +71,9 @@ angular.module('myApp.directives', []).
 //            chartsDefaults.chart.zoomType = null;
           }
 
-          if(attrs.type === 'column'){
+          if(attrs.type === 'bar'){
             chartsDefaults.chart.marginBottom = 80;
+              chartsDefaults.chart.defaultSeriesType = 'column';
 //            chartsDefaults.chart.spacingBottom = 50;
 //            chartsDefaults.chart.zoomType = null;
           }
@@ -96,7 +97,7 @@ angular.module('myApp.directives', []).
           });
 
 
-          if(attrs.type === 'line'){
+          if(attrs.type === 'line' || attrs.type === 'area'){
             var xAxis1 = chartdata.xAxis[0];
 
             //check for previous setting from service layer or json template... if it doesn't exist use the attr value

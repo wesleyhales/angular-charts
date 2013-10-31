@@ -44,6 +44,12 @@ angular.module('myApp.controllers', []).
                         'rgba(43,43,43,0.5)',
                         '#ff9191', '#ffa1a1', '#ffb6b6', '#ffcbcb'],
                     borderColor: '#ff0303'
+                },
+                bar: {
+                    labels: ['barexample'],
+                    dataAttr: ['label','value'],
+                    colors: [createGradient('rgba(69,196,0,0.6)','rgba(167,233,132,0.6)')],
+                    borderColor: '#3ac62f'
                 }
             };
 
@@ -124,16 +130,25 @@ angular.module('myApp.controllers', []).
                         }
                     ]
                 }
+            ]
 
-
+            var barChartData = [
+                {label:'total1',value:2},
+                {label:'total2',value:14},
+                {label:'total3',value:8},
+                {label:'total4',value:4},
+                {label:'total5',value:22}
             ]
 
             var tempPieChart = angular.copy($scope.chartTemplate.pie);
             var tempLineChart = angular.copy($scope.chartTemplate.line);
             var tempAreaChart = angular.copy($scope.chartTemplate.area);
+            var tempBarChart = angular.copy($scope.chartTemplate.bar);
+
             $scope.pieChartData = chartService.convertPieChart(pieChartData, tempPieChart, dataDescription.pie, '')
             $scope.lineChartData = chartService.convertLineChart(lineChartData, tempLineChart, dataDescription.timeseries, '');
             $scope.areaChartData = chartService.convertAreaChart(lineChartData, tempAreaChart, dataDescription.timeseries, '');
+            $scope.barChartData = chartService.convertBarChart(barChartData, tempBarChart, dataDescription.bar, '');
 
         }
 

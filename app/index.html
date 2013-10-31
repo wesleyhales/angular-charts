@@ -23,14 +23,18 @@
        type="line"
        xAxisLabel="return Highcharts.dateFormat('%H:%M:%S', this.value);"
        xAxisStep="3"></chart>
-</div>
 
-<chart id="areaDemo"
+
+<chart id="areademo"
        chartdata="areaChartData"
        type="area"
-       xAxisLabel="return Highcharts.dateFormat('%H:%M:%S', this.value);"
-       xAxisStep="3"></chart>
-</div>
+       xAxisLabel="return Highcharts.dateFormat('%H:%M:%S', this.value);"></chart>
+
+<chart id="barDemo"
+       chartdata="barChartData"
+       type="column"
+></chart>
+
 
 <script src="libs/angular-1.2.0-rc.3/angular.min.js"></script>
 <script src="libs/angular-1.2.0-rc.3/angular-route.min.js"></script>

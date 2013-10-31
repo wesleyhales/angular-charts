@@ -159,10 +159,7 @@
 
   },
 
-  "pareto": {
-    "chart": {
-      "defaultSeriesType": "column"
-    },
+  "bar": {
     "title": {
       "text": ""
     },
@@ -249,7 +246,7 @@
             "fontSize": "13px"
           },
           "align": "left",
-          "step": "3"
+          "step": "1"
         }
       }
     ],

@@ -4,7 +4,7 @@ angular.module('myApp.services', [], function($provide){
 
   var
     areaChart,
-    paretoChart,
+    barChart,
     pieChart,
     pieCompare,
     xaxis,
@@ -194,7 +194,7 @@ angular.module('myApp.services', [], function($provide){
       return areaChart;
     },
 
-    convertParetoChart: function (chartData, chartTemplate, dataDescription, settings, currentCompare) {
+    convertBarChart: function (chartData, chartTemplate, dataDescription, settings, currentCompare) {
 
       if (typeof chartData === 'undefined') {
         chartData = [];
@@ -203,17 +203,17 @@ angular.module('myApp.services', [], function($provide){
       var label,
         cdLength = chartData.length,
         compare = false,
-        allParetoOptions = [],
+        allBarOptions = [],
         stackedBar = false;
 
 
-      paretoChart = chartTemplate;
+      barChart = chartTemplate;
       seriesIndex = 0;
 
       function getPreviousData(){
         for(var i = 0;i < chartTemplate.series[0].data.length;i++){
           //pulling the "now" values for comparison later, assuming they will be in the 0 index :)
-          allParetoOptions.push(chartTemplate.xAxis.categories[i])
+          allBarOptions.push(chartTemplate.xAxis.categories[i])
         }
       }
 
@@ -240,42 +240,42 @@ angular.module('myApp.services', [], function($provide){
       }else{
         compare = false;
         label = '';
-        paretoChart.xAxis.categories = [];
-        paretoChart.series = [];
-        paretoChart.series[0] = {};
-        paretoChart.series[0].data = [];
-        paretoChart.legend.enabled = false;
+        barChart.xAxis.categories = [];
+        barChart.series = [];
+        barChart.series[0] = {};
+        barChart.series[0].data = [];
+        barChart.legend.enabled = false;
       }
 
-      paretoChart.plotOptions.series.borderColor = dataDescription.borderColor;
+      barChart.plotOptions.series.borderColor = dataDescription.borderColor;
 
 
       //create a basic compare series (more advanced needed for stacked bar)
       if(compare && !stackedBar){
-        paretoChart.series[1] = {};
-        paretoChart.series[1].data = [];
+        barChart.series[1] = {};
+        barChart.series[1].data = [];
         //repopulate array with 0 values based on length of NOW data
-        for(var i = 0; i < allParetoOptions.length; i++) {
-          paretoChart.series[1].data.push(0);
+        for(var i = 0; i < allBarOptions.length; i++) {
+          barChart.series[1].data.push(0);
         }
-        paretoChart.legend.enabled = true;
-//        paretoChart.series[1].name = label;
-//        paretoChart.series[0].name = "Now";
+        barChart.legend.enabled = true;
+//        barChart.series[1].name = label;
+//        barChart.series[0].name = "Now";
       }
 
       for (var i = 0; i < cdLength; i++) {
         var bar = chartData[i];
 
         if(!compare){
-          paretoChart.xAxis.categories.push(bar[dataDescription.dataAttr[0]]);
+          barChart.xAxis.categories.push(bar[dataDescription.dataAttr[0]]);
 
           //if we send multiple attributes to be plotted, assume it's a stacked bar for now
           if(typeof dataDescription.dataAttr[1] === 'object'){
-            createStackedBar(dataDescription,paretoChart,paretoChart.series.length);
+            createStackedBar(dataDescription,barChart,barChart.series.length);
           }else{
-            paretoChart.series[0].data.push(bar[dataDescription.dataAttr[1]]);
-            paretoChart.series[0].name = dataDescription.labels[0];
-            paretoChart.series[0].color = dataDescription.colors[0];
+            barChart.series[0].data.push(bar[dataDescription.dataAttr[1]]);
+            barChart.series[0].name = dataDescription.labels[0];
+            barChart.series[0].color = dataDescription.colors[0];
           }
 
         }else{
@@ -285,16 +285,16 @@ angular.module('myApp.services', [], function($provide){
 
           var newLabel = bar[dataDescription.dataAttr[0]],
             newValue = bar[dataDescription.dataAttr[1]],
-            previousIndex = allParetoOptions.indexOf(newLabel);
+            previousIndex = allBarOptions.indexOf(newLabel);
 
           //make sure this label existed in the NOW data
           if(previousIndex > -1){
             if(typeof dataDescription.dataAttr[1] === 'object'){
-              createStackedBar(dataDescription,paretoChart,paretoChart.series.length);
+              createStackedBar(dataDescription,barChart,barChart.series.length);
             }else{
-              paretoChart.series[1].data[previousIndex] = newValue;
-              paretoChart.series[1].name = (label !== '' ? label + ' ' + dataDescription.labels[0] : dataDescription.labels[0]);
-              paretoChart.series[1].color = dataDescription.colors[1];
+              barChart.series[1].data[previousIndex] = newValue;
+              barChart.series[1].name = (label !== '' ? label + ' ' + dataDescription.labels[0] : dataDescription.labels[0]);
+              barChart.series[1].color = dataDescription.colors[1];
             }
           }else{
             //not found for comparison
@@ -305,9 +305,9 @@ angular.module('myApp.services', [], function($provide){
 
       }
 
-      function createStackedBar(dataDescription,paretoChart,startingPoint){
+      function createStackedBar(dataDescription,barChart,startingPoint){
 
-        paretoChart.plotOptions = {
+        barChart.plotOptions = {
           series: {
             shadow: false,
             borderColor: dataDescription.borderColor,
@@ -327,24 +327,24 @@ angular.module('myApp.services', [], function($provide){
         stackName = label;
 
         if(compare){
-          paretoChart.legend.enabled = true;
+          barChart.legend.enabled = true;
         }
 
         for (var f = seriesIndex; f < (start + seriesIndex); f++) {
-          if(!paretoChart.series[f]){
-            paretoChart.series[f] = {'data':[]}
+          if(!barChart.series[f]){
+            barChart.series[f] = {'data':[]}
           }
-          paretoChart.series[f].data.push(bar[dataDescription.dataAttr[1][steadyCounter]]);
-          paretoChart.series[f].name = (label !== '' ? label + ' ' + dataDescription.labels[steadyCounter] : dataDescription.labels[steadyCounter]);
-          paretoChart.series[f].color = dataDescription.colors[f];
-          paretoChart.series[f].stack = label;
+          barChart.series[f].data.push(bar[dataDescription.dataAttr[1][steadyCounter]]);
+          barChart.series[f].name = (label !== '' ? label + ' ' + dataDescription.labels[steadyCounter] : dataDescription.labels[steadyCounter]);
+          barChart.series[f].color = dataDescription.colors[f];
+          barChart.series[f].stack = label;
           steadyCounter++
         }
 
 
       }
 
-      return paretoChart;
+      return barChart;
     },
 
     convertPieChart: function (chartData, chartTemplate, dataDescription, settings) {
