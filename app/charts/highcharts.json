@@ -18,7 +18,7 @@
       "verticalAlign": "middle",
       "floating": "true",
       "useHTML": true,
-      "style":{
+      "style": {
         "fontSize": "49px",
         "color": "#ff0303",
         "marginTop": "",
@@ -29,16 +29,18 @@
       "percentageDecimals": 0,
       "valueSuffix": "%",
       "formatter": "return '<span style=\"font-weight:bold; font-size:14px;color:' + this.point.series.color + '\">'+ (this.point.name || this.series.name) +': ' + Math.round(this.percentage*100)/100 + '%</span><br />'",
-      "borderRadius" : 0
+      "borderRadius": 0
     },
     "plotOptions": {
       "pie": {
         "shadow": false,
-        "center": ["50%","50%"],
-        "size":"100%",
+        "center": ["50%", "50%"],
+        "size": "100%",
         "borderWidth": 0,
         "borderColor": "#fff",
-        "animation": {"duration":400}
+        "animation": {
+          "duration": 400
+        }
       }
     },
     "series": [
@@ -77,7 +79,7 @@
     },
     "tooltip": {
       "formatter": "return '<span style=\"font-weight:bold;font-size:14px;color:' + this.point.series.color + '\">'+ this.y +' ' + (this.point.name || this.series.name) + ' </span><span style=\"font-weight:bold;\"></span><br />'+Highcharts.dateFormat('%A %H:%M', this.x) + '<br />'",
-      "borderRadius" : 0
+      "borderRadius": 0
     },
     "xAxis": [
       {
@@ -99,10 +101,10 @@
           "text": ""
         },
         "min": 0,
-        "labels":{
-          "align":"left",
-          "x":3,
-          "y":16
+        "labels": {
+          "align": "left",
+          "x": 3,
+          "y": 16
         },
         "showFirstLabel": false
       },
@@ -112,10 +114,10 @@
         },
         "min": 0,
         "opposite": true,
-        "labels":{
-          "align":"right",
-          "x":-3,
-          "y":16
+        "labels": {
+          "align": "right",
+          "x": -3,
+          "y": 16
         },
         "showFirstLabel": false
       }
@@ -127,7 +129,10 @@
       "floating": true,
       "borderWidth": 0,
       "y": 0,
-      "itemStyle": {"fontSize": "14px","fontFamily": "Lato, Helvetica, Arial, sans-serif"}
+      "itemStyle": {
+        "fontSize": "14px",
+        "fontFamily": "Lato, Helvetica, Arial, sans-serif"
+      }
     },
     "plotOptions": {
       "line": {
@@ -138,7 +143,9 @@
           "fillColor": "white",
           "lineColor": null
         },
-        "animation": {"duration":400},
+        "animation": {
+          "duration": 400
+        },
         "threshold": 0
       }
     },
@@ -176,7 +183,7 @@
     "tooltip": {
       "percentageDecimals": 0,
       "formatter": "return this.x + '<br/>' + '<span style=\"font-weight:bold;font-size:14px;color:' + this.point.series.color + '\">'+ this.y + ' ' + (this.point.name || this.series.name) + '</span><br />'",
-      "borderRadius" : 0
+      "borderRadius": 0
     },
     "xAxis": {
       "categories": [],
@@ -233,7 +240,7 @@
     },
     "tooltip": {
       "formatter": "return '<span style=\"font-weight:bold;font-size:14px;color:' + this.point.series.color + '\">'+ this.y +' ' + (this.point.name || this.series.name) + '</span><br />'+Highcharts.dateFormat('%A %H:%M', this.x) + '<br />'",
-      "borderRadius" : 0
+      "borderRadius": 0
     },
     "xAxis": [
       {
@@ -256,10 +263,10 @@
           "text": ""
         },
         "min": 0,
-        "labels":{
-          "align":"left",
-          "x":3,
-          "y":16
+        "labels": {
+          "align": "left",
+          "x": 3,
+          "y": 16
         },
         "showFirstLabel": false
       },
@@ -269,10 +276,10 @@
         },
         "min": 0,
         "opposite": true,
-        "labels":{
-          "align":"right",
-          "x":-3,
-          "y":16
+        "labels": {
+          "align": "right",
+          "x": -3,
+          "y": 16
         },
         "showFirstLabel": false
       }
@@ -283,7 +290,9 @@
       "verticalAlign": "top",
       "floating": true,
       "borderWidth": 0,
-      "itemStyle": {"fontSize": "14px"}
+      "itemStyle": {
+        "fontSize": "14px"
+      }
     },
     "plotOptions": {
       "area": {
@@ -294,7 +303,9 @@
         },
         "threshold": null,
         "shadow": false,
-        "animation": {"duration":400}
+        "animation": {
+          "duration": 400
+        }
       },
       "series": {
         "lineWidth": 1,
@@ -304,7 +315,9 @@
           "fillColor": "white",
           "lineColor": null
         },
-        "animation": {"duration":400}
+        "animation": {
+          "duration": 400
+        }
       }
     },
     "colors": [
