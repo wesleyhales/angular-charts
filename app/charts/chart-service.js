@@ -62,7 +62,7 @@ angular.module('myApp.services', [], function ($provide) {
         return lineChart;
       },
 
-      convertAreaChart: function (chartData, chartTemplate, dataDescription, settings, currentCompare) {
+      convertAreaChart: function (chartData, chartTemplate, dataDescription, settings) {
 
         areaChart = angular.copy(areaChart);
 //      console.log('chartData',chartData[0])
@@ -201,31 +201,15 @@ angular.module('myApp.services', [], function ($provide) {
           stackedBar = true;
         }
 
-        if (currentCompare === 'YESTERDAY') {
-          label = 'Yesterday ';
-          compare = true;
-          if (stackedBar) {
-            seriesIndex = dataDescription.dataAttr[1].length;
-          }
-          getPreviousData()
-        }
-        else if (currentCompare === 'LAST_WEEK') {
-          label = 'Last Week ';
-          compare = true;
-          if (stackedBar) {
-            seriesIndex = dataDescription.dataAttr[1].length;
-          }
-          seriesIndex =
-            getPreviousData()
-        } else {
-          compare = false;
-          label = '';
-          barChart.xAxis.categories = [];
-          barChart.series = [];
-          barChart.series[0] = {};
-          barChart.series[0].data = [];
-          barChart.legend.enabled = false;
-        }
+
+        compare = false;
+        label = '';
+        barChart.xAxis.categories = [];
+        barChart.series = [];
+        barChart.series[0] = {};
+        barChart.series[0].data = [];
+        barChart.legend.enabled = false;
+
 
         barChart.plotOptions.series.borderColor = dataDescription.borderColor;
 

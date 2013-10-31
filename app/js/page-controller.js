@@ -48,8 +48,8 @@ angular.module('myApp.controllers', []).
         bar: {
           labels: ['barexample'],
           dataAttr: ['label', 'value'],
-          colors: [createGradient('rgba(69,196,0,0.6)', 'rgba(167,233,132,0.6)')],
-          borderColor: '#3ac62f'
+          colors: [createGradient('rgba(43,166,203,0.9)', 'rgba(43,166,203,0.4)')],
+          borderColor: 'rgba(43,166,203,1)'
         }
       };
 

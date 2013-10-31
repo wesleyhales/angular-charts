@@ -10,7 +10,7 @@
 </head>
 <body ng-controller="PageCtrl">
 
-<chart id="percentage"
+<chart id="pieDemo"
        chartdata="pieChartData"
        type="pie" style="height:260px"
        titleicon="&hearts;"
@@ -18,14 +18,14 @@
        titleimagetop="-6%"
        titleimageleft="-2%"></chart>
 
-<chart id="topic-totals"
+<chart id="lineDemo"
        chartdata="lineChartData"
        type="line"
        xAxisLabel="return Highcharts.dateFormat('%H:%M:%S', this.value);"
        xAxisStep="3"></chart>
 
 
-<chart id="areademo"
+<chart id="areaDemo"
        chartdata="areaChartData"
        type="area"
        xAxisLabel="return Highcharts.dateFormat('%H:%M:%S', this.value);"></chart>
